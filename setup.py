@@ -34,7 +34,7 @@ def setupArg():
         license='Python License',
         )
 
-print("\n\tPlease choose your installation mode. Valid options are 1 or 2.\n\n\tIMPORTANT: Installation requires root privileges! Either change to the root account and run the script or use sudo.\n\n\t1 to make the scripts globally available. This will create symbolic links from the downloaded script files to /usr/bin.\nIn addition the module containing functions for NichePy will be installed using Python's installer.\n\n\t2 to install in the same manner as 2 but also install the argparse module using Python's installer.\nThis should only be necessary if you run Python3 < 3.2.\n\n")
+print("\n\tPlease choose your installation mode. Valid options are 1 or 2.\n\n\tIMPORTANT: Installation requires root privileges! Either change to the root account and run the script or use sudo.\n\n\t1 to make the scripts globally available. This will create symbolic links from the downloaded script files to /usr/bin.\n\t  In addition the module containing functions for NichePy will be installed using Python's installer.\n\n\t2 to install in the same manner as 2 but also install the argparse module using Python's installer.\n\t  This should only be necessary if you run Python3 < 3.2.\n\n")
 
 ### Ask for user input and create a list containing the python scripts to be installed
 Install=input("\n\tPlease choose your installation mode: ")
