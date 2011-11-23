@@ -8,14 +8,14 @@ Mariya Shcheglovitova (m.shcheglovitova@gmail.com)
     * A/ REQUIREMENTS
     * B/ WORKFLOW
     * C/ INPUT-OUPTPUT DATA
-    * C/ nicheIDENTITY.PY
-    * D/ nicheBACKGROUND.PY
-    * E/ getMETRIC.PY
-    * F/ RUNNING LONG ANALYSES
-    * G/ PIPELINES
-    * H/ RUNNING ANALYSES IN PARALLEL
-    * I/ REFERENCES
-    * J/ LICENSE
+    * D/ nicheIDENTITY.PY
+    * E/ nicheBACKGROUND.PY
+    * F/ getMETRIC.PY
+    * G/ RUNNING LONG ANALYSES
+    * H/ PIPELINES
+    * I/ RUNNING ANALYSES IN PARALLEL
+    * J/ REFERENCES
+    * K/ LICENSE
     *
 --------------------------------------------------------------------------------
 A/ REQUIREMENTS
@@ -336,7 +336,7 @@ http://cartwrightlab.wikispaces.com/IO+Redirection
 http://cartwrightlab.wikispaces.com/Running+Long+Jobs
 
 --------------------------------------------------------------------------------
-G/ PIPELINES
+H/ PIPELINES
 
     NichePy is well-suited to be run as part of analysis pipelines. We designed 
 NichePy as a set of independent Python scripts with the idea that they may be
@@ -365,7 +365,7 @@ any user input. Adding log-files into this chain would allow evaluating each
 step after the analysis finishes.
 
 --------------------------------------------------------------------------------
-H/ RUNNING ANALYSES IN PARALLEL
+I/ RUNNING ANALYSES IN PARALLEL
 
     At present NichePy is not written to take advantage of multiple processors. 
 Both nicheIdentity and nicheBackground run reasonably fast, but running 
@@ -401,7 +401,7 @@ unless you pass the flag -j+0 to GNU Parallel.
 Running your analyses in this way can cut run times significantly!
 
 --------------------------------------------------------------------------------
-I/ REFERENCES
+J/ REFERENCES
 
 Roedder D & JO Engler (2011) Quantitative metrics of overlaps in Grinnellian
     niches: advances and possible drawbacks. Global Ecology and Biogeography
@@ -410,7 +410,7 @@ Warren DL, RE Glor M Turelli (2008) Environmental niche identity versus
     2868-2883
 
 --------------------------------------------------------------------------------
-J/ LICENSES
+K/ LICENSES
     
     NichePy is distributed under the GNU General Public License version 3 or 
 higher (www.gnu.org/copyleft/gpl.html).
