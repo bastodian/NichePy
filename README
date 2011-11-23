@@ -8,7 +8,7 @@ scripts and example files.
 
 Alternatively:
 
-git clone https://github.com/bastodian/NichePy.git
+$ git clone https://github.com/bastodian/NichePy.git
 
 This will download the contents of the NichePy repository into
 a folder called NichePy.
