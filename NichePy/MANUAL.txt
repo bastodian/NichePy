@@ -1,0 +1,411 @@
+# NichePy Ver 1.1 - Python(R) scripts for evaluating overlap among ENMs/SDMs #
+
+Nov 18, 2011
+Bastian Bentlage (bastodian@gmail.com)
+Mariya Shcheglovitova (m.shcheglovitova@gmail.com)
+
+> CONTENTS
+    * A/ REQUIREMENTS
+    * B/ WORKFLOW
+    * C/ INPUT-OUPTPUT DATA
+    * C/ nicheIDENTITY.PY
+    * D/ nicheBACKGROUND.PY
+    * E/ getMETRIC.PY
+    * F/ RUNNING LONG ANALYSES
+    * G/ PIPELINES
+    * H/ RUNNING ANALYSES IN PARALLEL
+    * I/ REFERENCES
+    * J/ LICENSE
+    *
+--------------------------------------------------------------------------------
+A/ REQUIREMENTS
+
+    All scripts provided in NichePy should function on any operating system that
+has the Python Programming Language version 3 or higher installed. Please
+refer to www.python.org/getit/ to download and install Python on your operating 
+system. We recommend installing Python >= version 3.2. Python < version 3.2 
+should work as well, but see the end of this section.
+     
+    MACOS: Current versions of MacOSX come with Python2 pre-installed, but at 
+this point lack Python3 in the default installation. You can download Python3
+for MacOS from www.python.org/getit/.
+    
+    LINUX/BSD/UNIX: Either use your package manager to download the latest
+Python3 package or build Python 3 from source (www.python.org/getit/).
+    
+     WINDOWS: Windows installers for Python can be downloaded at 
+www.python.org/getit/. Detailed instructions on how to set up Python on 
+Windows can be found here: http://docs.python.org/using/windows.html. 
+Note: to be able to run analyses in batches as part of pipelines (see F & G 
+below) you may want to make yourself familiar with Cygwin (www.cygwin.com) 
+which provides a Linux-like environment for Windows. In this case install Python 
+in the Cygwin environment (see http://docs.python.org/using/windows.html).
+
+    If you are working with WINDOWS you will have to replace / with \ where 
+applicable unless you use Cygwin!
+    
+    Older versions of Python should also be capable of running the scripts but 
+the code is not compatible with Python ver. 2.x. If you are running Python 
+v.<3.2 you will have to set up the argparse module (argparse.py) that we are 
+distributing with the scripts. A quick and dirty way to set up argparse is to 
+place the file argparse.py into the same folder as the remainder of the NichePy 
+scripts. 
+
+    The setup script setup.py should take care of the installation of argparse
+in case you need it. With root privileges run:
+
+$ python3 setup.py install
+ 
+--------------------------------------------------------------------------------
+B/ WORKFLOW
+
+    NichePy contains 3 Python scripts as of now: nicheIdentity.py, 
+nicheBackground.py, and getMetric.py. 
+
+    General workflow:
+species occurrence data -> nicheIdentity.py -> ENM/SDM -> getMetric.py
+species occurrence data -> nicheBackground.py -> ENM/SDM -> getMetric.py
+    
+    nicheIdentity.py resamples species occurrence data as outlined in Warren 
+et al.'s (2008) test of niche identity. Assume you have occurrence point nA 
+and nB for two species A and B. The script pools nA and nB. After pooling 
+pseudo-replicate datasets of sizes nA and nB are generated from the pooled 
+dataset nA+nB. With both original and pseudoreplicate datasets ENMs/SDMs can 
+be build.
+
+    nicheBackground.py resamples species occurrence data as outlined in Warren
+et al.'s (2008) test of niche background. If A and B are species let oA and oB
+denote the cells in which each species is known to occur in study areas NA and
+NB. The script resamples oA cells from NA and oB cells from NB. Both NA and NB
+have to be ASCII grid files that need to be supplied by the user. For eaxmple,
+NA and NB could be euclidian distance buffers around oA and oB, which can easily 
+be generated in ESRI's ArcMap or ArcView. Using the pseudo-replicate datasets 
+ENMS/SDMs can be built.
+
+    ENM/SDM are left to the user. I.e., the user of NichePy decides how ENMs/
+SDMs will be generated from pseudo-replicate datasets. Several software packages
+are available for this purpose. Among these, openModeller*1 is particularly 
+interesting, as openModeller allows running multiple different ENM/SDM 
+algorithms. Similarly Maxent*2  lends itself to analyzing a lot of data in batch 
+mode. For now, we can advice you on how to run openModeller and/or Maxent in 
+batch mode to analyze data efficiently with NichePy if you contact us. We are 
+planning on posting more detailed instructions in a blog later.
+
+    getMetric.py calculates the niche overlap metrics (I, D, and BC). For the 
+niche identity test overlap metrics are cacluated by comparing the ENMs/SDMs for
+the original occurrence datasets to one another. Then all pair-wise comaprisons
+between the resampled datasets are performed. For the background test, niche
+overalp metrics are calculated by comparing the ENMs/SDMs for the original 
+occurrence datasets to one another. Pseudo-replicate ENMs/SDMs generated from
+the background of species B (NB) are compared to the ENM/SDM of species A using 
+the niche overlap metrics. Then, ENMs/SDMs generated from NA are compared to the
+ENM/SDM from species B.
+    P-values for both tests are calculated for all metrics and tests by counting
+the number of pseudo-replicate overlap values that are bigger or smaller than
+the value observed from ENMs/SDMs generated from original occurrence datasets.
+This allows testing two different null-hupotheses: 1) Are the ENMs/SDMs of 
+species A and B more different than expected by chance, and 2) Are the ENMs/SDMs
+of species A and B more similar than expected by chance?
+
+*1 http://openmodeller.sourceforge.net/ -- Note that the Dektop version of 
+openModeller can be a bit iffy when dealing with hundreds of occurrence datsets, 
+as is teh case when performing the tests implemented in NichePy. Here the 
+command line verion of openModeller is much more reliable, but will you will
+have to compile it from source 
+(see http://openmodeller.sourceforge.net/INSTALL.html).
+
+*2 (http://www.cs.princeton.edu/~schapire/maxent/)
+
+--------------------------------------------------------------------------------
+C/ INPUT-OUTPUT DATA
+
+    nicheIdentity requires two comma-delimited csv files containing species ID,
+longitude, and latitude. resampling of occurrence data for the identity test 
+occurrs from these input files. The output of this script is a comma-delimited
+csv file that contains both the original and the resampled occurrence datasets.
+Resampled datasets are numbered from 0 to n (where n is the number of 
+pseudo-replicates).
+    nicheBackground also requires two comma-delimited csv files containing 
+species ID, longitude, and latitude. In addition, two ARC/INFO ASCII grids are 
+required that describe the background from which occurrence points are 
+resampled. The output of this script is a comma-delimited csv file that contains 
+both the original and the resampled occurrence datasets. Resampled datasets are 
+numbered from 0 to n (where n is the number of pseudo-replicates).
+    getMetric requires a folder that contains folders with the original and 
+pseudo-replicate ARC/INFO ASCII grids that represent niche or distribution 
+models. E.g., a folder /output containing the sub-folders /algorithmA and 
+/algorithmB which contain original and pseudo-replicate models derived from two 
+different algorithms. The ARC/INFO ASCII files contained in these folders should 
+be named in the following way: speciesA.asc and speciesB.asc whereas pseud-
+replicates should bennamed speciesA_0.asc - speciesA_n.asc and speciesB_0 - 
+speciesB_n.asc. If models were generated using the csv files generated by 
+nicheIdentity and nicheBackground files shoudl already be named appropriately.
+    getMetric will loop over the sub-folders and calculate metrics for Arc/INFO 
+ASCII grids contained in the sub-folders. getMetric will fail if you try to run 
+it on a folder that does not contain one or several sub-folders. So if you only 
+have a single algorithm/experiment you still need to create a folder containing 
+a sub-folder in which the ARC/INFO ASCII grids are contained (e.g., 
+/output/algorithm).
+
+--------------------------------------------------------------------------------
+D/ nicheIDENTITY.PY
+
+    Two comma-delimited csv files with species occurence data are required as 
+input (Species,Longitude,Latitude) where Longitude and Latitude should to be in 
+decimal degrees.
+
+    The script can be called from the command line as follows: 
+$ python3 /path/to/file/nicheIdentity.py
+    Depending on the operating system the following may execute Python ver. 3:
+$ python /path/to/file/nicheIdentity.py
+
+*Options
+
+-h or --help
+    Displays help in the terminal.
+-d or --outdir
+    Required flag that specifies the output directory for the csv file that
+    is generated
+-o or --outfilename
+    Required flag that specifies the name of the output csv file. Include .csv 
+    or .txt; otherwise no file-extension is generated.
+-A or --myfileA
+    Required flag that specifies the input csv file containing occurrence data 
+    for species A. Use absolute paths to ensure the script can find the file.
+    E.g., /path/to/file/myfileA.csv
+-B or --myfileB
+    Required flag that specifies the input csv file containing occurrence data 
+    for species B. Use absolute paths to ensure the script can find the file.
+    E.g., /path/to/file/myfileB.csv
+-n or --numreps
+    Optional flag that specifies the number of pseudo-replicate datasets that 
+    will be generated. Default is 100.
+    
+--------------------------------------------------------------------------------
+E/ nicheBACKGROUND.PY
+
+    Two comma-delimited csv files with species occurence data are required as 
+input (Species,Longitude,Latitude) where Longitude and Latitude should to be in 
+decimal degrees. In addition, two ASCII grids need to be provided from which
+pseudo-replicate occurrence points will be drawn. It is up to the user to decide
+how these ASCII grids will be generated.
+
+    The script can be called from the command line as follows: 
+$ python3 /path/to/file/nicheBackground.py
+    Depending on the operating system the following may execute Python ver. 3:
+$ python /path/to/file/nicheBackground.py
+
+*Options
+
+-h or --help
+    Displays help in the terminal.
+-d or --outdir
+    Required flag that specifies the output directory for the csv file that
+    is generated
+-o or --outfilename
+    Required flag that specifies the name of the output csv file. Include .csv 
+    or .txt; otherwise no file-extension is generated.
+-A or --myfileA
+    Required flag that specifies the input csv file containing occurrence data 
+    for species A. Use absolute paths to ensure the script can find the file.
+    E.g., /path/to/file/myfileA.csv
+-B or --myfileB
+    Required flag that specifies the input csv file containing occurrence data 
+    for species B. Use absolute paths to ensure the script can find the file.
+    E.g., /path/to/file/myfileB.csv
+-a or --GridA
+    Required flag that specifies the input ASCII grid corresponding to the csv
+    for species A. Use absolute paths to ensure the script can find the file.
+    E.g., /path/to/file/GridA.asc
+-b or --GridB
+    Required flag that specifies the input ASCII grid corresponding to the csv
+    for species B. Use absolute paths to ensure the script can find the file.
+    E.g., /path/to/file/GridB.asc
+-n or --numreps
+    Optional flag that specifies the number of pseudo-replicate datasets that 
+    will be generated. Default is 100.
+
+--------------------------------------------------------------------------------
+F/ getMETRIC.PY
+
+    This script calculates the coorected modified Hellinger distance, I (Roedder 
+& Engler 2011; Bentlage & Shcheglovitova in prep), and Schoener's D (Warren et 
+al. 2008; Roedder & Engler 2011; Bentlage & Shcheglovitova in prep) from ENMs/
+SDMs. 
+    ASCII grid files from pseudo-replicates should be named somename_number.asc
+(e.g., speciesA_0.asc, speciesB_0.asc, speciesA_1.asc, speciesB_1.asc,...). It
+is only important that the last part of the filename contains a number prefaced 
+by an underscore. ENMs/SDMs derived from the original occurrence datasets (i.e.,
+not the pseudo-replicates) should not contain an underscore followed by a 
+number. If pseudo-replicates were generated using nicheIdentity.py and/or 
+nicheBackground.py should conform to this standard.
+    ASCII grid files named as described above need to be in a folder that 
+contains a subfolder for each ENM/SDM algorithm. E.g., the folder /getMetric
+should contain folders /getMetric/algorithmA, getMetric/algorithmB,...
+    getMetric.py will iterate over the folder that contains subfolders with 
+ASCII grids and calculate I or D for the appropriate pairs of ASCII grids. The
+pairing of ASCII grids to be compared depends on the test, identity or 
+background.
+
+    The script can be called from the command line as follows: 
+$ python3 /path/to/file/nicheMetric.py
+    Depending on the operating system the following may execute Python ver. 3:
+$ python /path/to/file/nicheMetric.py
+
+
+*Options
+
+-h or --help
+    Displays help in the terminal.
+-i or --indir
+    Required flag that specifies the input directory that contains subfolders 
+    each of which contains ASCII grid files from ENM/SDM that shall be compared
+    using I, D, and/or BC.
+-t or --test
+    Required flag. 
+    -t identity calculates I, D, and/or BC for the niche identity test outlined 
+    in B above. Niche models should have been generated from pseudo-replicates 
+    generated by nicheIdentity.py. 
+    -t background calculates I or D for the niche background test outlined in 
+    B above. Niche models should have been generated from pseudo-replicates 
+    generated by nicheBackground.py.
+-s or --statistic
+    Required flag.
+    -s more calculates P by counting the number of pseudo-replicate niche 
+    overlap values (I, D, and/or BC) that are smaller than I, D, and/or BC 
+    observed from the original occurrence datsets. This test thus tests the
+    hypothesis "Are the ENMs/SDMs for species A and B more similar than the 
+    pseudo-replicates?"
+    -s less calculates P by counting the number of pseudo-replicate niche 
+    overlap values (I, D, and/or BC) that are larger than I, D, and/or BC 
+    observed from the original occurrence datsets. This test thus tests the
+    hypothesis "Are the ENMs/SDMs for species A and B less similar than the 
+    pseudo-replicates?"
+-n or --numreps
+    Optional flag that specifies the number of pseudo-replicate datasets that 
+    will be generated. Default is 100.
+    
+--------------------------------------------------------------------------------
+G/ RUNNING LONG ANALYSES
+
+    Both nicheIdentity.py and nicheBackground.py run quite fast and generally 
+finish within minutes. Calculating I, D, or BC for large datsets and many 
+replicates, however, may take hours or days. You may not want to stay logged in
+to your shell that long. In order to be able to log out from a shell/terminal 
+session and secure your analysis we have two suggestions. 1) Run the analysis in 
+the background and 2) log the messages that are dumped onto the screen in a 
+logfile. ($ below represents the shell prompt)
+
+    Running the analysis in the background is easily accomplished on Unix-like
+systems (including Cygwin). To run a program in the background simply add an 
+ampersand to the end of the command. For example:
+
+$ python3 ./getMetric.py -i /some/path/ -s more -t identity &
+
+    Here the script runs in the background and will not terminate even when the
+shell is closed. It can be stopped using the kill command though.
+
+    Log the messages the script dumps onto the screen and run the script in the 
+background. For this purpose output redirection is useful. For example:
+
+$ python3 ./getMetric.py -i /some/path/ -s more -t identity > log.txt 2>&1 &
+
+    The above command redirects error messages and other messages into a file 
+called log.txt while the program runs silently in the background.
+
+    Run a script and delete messages that appear on the screen immediately:
+    
+$ python3 ./getMetric.py -i /some/path/ -s more -t identity > /dev/null 2>&1 &
+
+    In the above example the script runs in the background and all messages 
+generated by it are discarded in the bin (/dev/null).
+
+    More information on these topics can be found on the internet by searching
+for input/output redirection in the shell.
+    
+    Our intro to these issues can be found here:
+http://cartwrightlab.wikispaces.com/IO+Redirection
+http://cartwrightlab.wikispaces.com/Running+Long+Jobs
+
+--------------------------------------------------------------------------------
+G/ PIPELINES
+
+    NichePy is well-suited to be run as part of analysis pipelines. We designed 
+NichePy as a set of independent Python scripts with the idea that they may be
+part of an analysis chain. Below we outline the general idea of such a chain. 
+If you have suggestions or questions please do not hesitate to contact us!
+
+    An example chain of commands:
+    
+$ python3 ./nicheIdentity.py -d /some/outdir -o outfilename.csv 
+    -A myFileA.csv -B myFileB.csv && ENM/SDM && python3 ./getMetric.py 
+    -i /some/dir/with/ENMsOrSDMs/ -t identity && execute some r.script &
+    
+    The above is not a true pipeline in the sense that standard in/standard out 
+are piped straight from one program to the next. Instead multiple programs and
+scripts are chained together using &&. Here the first program or script finishes
+and if it successfully exits the next program is executed using the files that 
+the previous program/script created as input. This process continues until the
+end of pipeline is reached.
+    In the example NichePy scripts are incorporated into an automated analysis 
+by creating the input files for some ENM/SDM algorithm/program which generates 
+ENMs/SDMs from pseudo-replicate and original occurrence datasets. ENMs/SDMs
+generated can then serve as the input for getMetric.py which generates I, D, 
+and/or BC values. These in turn can be read into some r script and automatically
+analyzed in some custom way. The entire analysis runs in the background without
+any user input. Adding log-files into this chain would allow evaluating each 
+step after the analysis finishes.
+
+--------------------------------------------------------------------------------
+H/ RUNNING ANALYSES IN PARALLEL
+
+    At present NichePy is not written to take advantage of multiple processors. 
+Both nicheIdentity and nicheBackground run reasonably fast, but running 
+getMetric on several large datasets sequentially can take a long time. If you 
+have output from multiple experiments or modeling algorithms you can parallelize 
+getMetric by using GNU Parallel. Download it and follow the installation 
+instructions: http://www.gnu.org/s/parallel/
+    Remember that getMetric requires your results to be in a sub-folder or it 
+will exit with an error (see section C). For parallelization of getMetric you 
+need to create to create one more layer or folders to run getMetric (e.g., 
+/ouput/modelA/modelA and /output/modelB/modelB instead of /output/modelA and 
+/output/modelB ).
+    Further, you need to set up a batch file that contains the commands you want 
+to run. E.g., a text file batch.txt containg the following:
+
+python3 ./getMetric.py -i /output/modelA/ -s more -t identity
+python3 ./getMetric.py -i /output/modelB/ -s more -t identity
+
+    You can run the commands contained in the text file in parallel using GNU
+Parallel as follows:
+
+$ parallel -j+0 < batch.txt
+
+    In this simple example the contents of batch.txt are passed to GNU Parallel 
+which handles the parallelization of the commands contained in batch.txt. In the 
+example here two instances of getMetric will run in parallel, one working on 
+modelA and the other one evaluating modelB. The flag -j+0 tells GNU Parallel not
+to start more threads than there are cores on the machine. If you include more
+instances of getMetric in the batch file than there are physcial cores on the 
+machine GNU Parallel will start more threads than there are physical cores, 
+ubless you pass the flag -j+0 to GNU Parallel.
+
+Running your analyses in this way can cut analysis times significantly!
+
+--------------------------------------------------------------------------------
+I/ REFERENCES
+
+Roedder D & JO Engler (2011) Quantitative metrics of overlaps in Grinnellian
+    niches: advances and possible drawbacks. Global Ecology and Biogeography
+Warren DL, RE Glor M Turelli (2008) Environmental niche identity versus
+    conservatism: quantitative approaches to niche evolution. Evolution 62:
+    2868-2883
+
+--------------------------------------------------------------------------------
+J/ LICENSES
+    
+    NichePy is distributed under the GNU General Public License version 3 or 
+higher (www.gnu.org/copyleft/gpl.html).
+    The argparse library is part of the Python Standard Library 
+(http://docs.python.org/dev/library/index.html) and distributed under the Python
+License (http://docs.python.org/release/3.1.3/license.html).
