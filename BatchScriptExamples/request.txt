@@ -5,7 +5,7 @@
 #
 WKT Coord System = GEOGCS["WGS84", DATUM["WGS84", SPHEROID["WGS84", 6378137.0, 298.257223563]], PRIMEM["Greenwich", 0.0], UNIT["degree", 0.017453292519943295], AXIS["Longitude",EAST], AXIS["Latitude",NORTH]]
 
-Occurrences source = ../Example/niche_identity/chlor-coel-identity.csv.om
+Occurrences source = ../Example/niche_background/anoles-background.csv.om
 
 # Only occurrences with this label (group id) will be used.
 
@@ -65,13 +65,13 @@ Output mask = ../Example/Hispaniola_PCA_20/his_pca_20_1.asc
 
 # Output model name (serialized model).
 #
-Output model = ../Example/niche_identity/models/RF/taxon.xml
+Output model = ../Example/niche_background/models/ENFA/taxon.xml
 
 # Output file name (projected map).
 # Make sure to use the correct extension as shown in the Output file type
 # documentation shown below!
 
-Output file = ../Example/niche_identity/models/RF/taxon.asc
+Output file = ../Example/niche_background/models/ENFA/taxon.asc
 
 # Output file type. Options:
 #
@@ -99,18 +99,18 @@ Output file type = FloatingASC
 ########
 ## Ecological Niche Factor Analysis 
 ##
-#Algorithm = ENFA 
-#Parameter = NumberOfBackgroundPoints 10000
-#Parameter = NumberOfRetries 5
-#Parameter = DiscardMethod 2
-#Parameter = RetainComponents 2
-#Parameter = RetainVariation 0.75
-#Parameter = VerboseDebug 0
+Algorithm = ENFA 
+Parameter = NumberOfBackgroundPoints 10000
+Parameter = NumberOfRetries 5
+Parameter = DiscardMethod 2
+Parameter = RetainComponents 2
+Parameter = RetainVariation 0.75
+Parameter = VerboseDebug 0
 
 ########
 ## Random Forests
 ##
-Algorithm = RF
-Parameter = NumTrees 100
-Parameter = VarsPerTree 0
-Parameter = ForceUnsupervisedLearning 0
+#Algorithm = RF
+#Parameter = NumTrees 100
+#Parameter = VarsPerTree 0
+#Parameter = ForceUnsupervisedLearning 0

@@ -1,0 +1,3 @@
+comparison,P-value for I,P-value for D,P-value for BC
+Anolis_chlorocyanus vs Anolis_coelestinus_background,0.0,0.0,0.0
+Anolis_coelestinus vs Anolis_chlorocyanus_background,1.0,1.0,1.0
