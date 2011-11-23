@@ -7,7 +7,7 @@ import os, stat
 '''
     Installation script that sets up NichePy and installs the modules it depends on.
 
-    This should work on Unix-like systems including Cygwin on Windows. Windows is not supported by this script.  
+    This should work on Unix-like systems including Cygwin on Windows. 
 '''
 
 
