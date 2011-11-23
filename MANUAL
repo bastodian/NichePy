@@ -36,7 +36,7 @@ Python3 package or build Python 3 from source (www.python.org/getit/).
      WINDOWS: Windows installers for Python can be downloaded at 
 www.python.org/getit/. Detailed instructions on how to set up Python on 
 Windows can be found here: http://docs.python.org/using/windows.html. 
-Note: to be able to run analyses in batches as part of pipelines (see F & G 
+Note: to be able to run analyses in batches as part of pipelines (see G & H 
 below) you may want to make yourself familiar with Cygwin (www.cygwin.com) 
 which provides a Linux-like environment for Windows. In this case install Python 
 in the Cygwin environment (see http://docs.python.org/using/windows.html).
@@ -44,17 +44,17 @@ in the Cygwin environment (see http://docs.python.org/using/windows.html).
     If you are working with WINDOWS you will have to replace / with \ where 
 applicable unless you use Cygwin!
     
-    Older versions of Python should also be capable of running the scripts but 
-the code is not compatible with Python ver. 2.x. If you are running Python 
-v.<3.2 you will have to set up the argparse module (argparse.py) that we are 
-distributing with the scripts. A quick and dirty way to set up argparse is to 
-place the file argparse.py into the same folder as the remainder of the NichePy 
-scripts. 
+    Our code is not compatible with Python ver. 2.x. If you are running Python 
+ver. < 3.2 you will have to set up the argparse module (argparse.py) that we are 
+distributing with the scripts. 
 
     The setup script setup.py should take care of the installation of argparse
 in case you need it. With root privileges run:
 
 $ python3 setup.py install
+
+If you don't run the setup script just leave the modules argparse.py and
+nichefunc.py in the directory that contains the remainder of the Python scripts.
  
 --------------------------------------------------------------------------------
 B/ WORKFLOW
