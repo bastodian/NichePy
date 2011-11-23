@@ -13,7 +13,7 @@
 ### ./om_console_batch.sh chlorocyanus 3 ../Example/niche_identity/models/ENFA/
 ###
 ### I have two pseudo-replicate datasets (chlorocyanus_0 and chlorocyanus_1) contained in the examnple niche_identity csv file and will temporarily name 
-### my original dataset chlorocyanus_3 to loop over it using the wrapper below. I can then repeat the procedure for coelestinus.
+### my original dataset chlorocyanus_2 to loop over it using the wrapper below. I can then repeat the procedure for coelestinus.
 ###
 ### In order to run another algorithm or change the input/output directories for grids and occurrence datasets the file request.txt will need to be 
 ### modified. Please refer to the OM documentation for details on the request file format specifications.
