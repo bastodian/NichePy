@@ -87,9 +87,8 @@ SDMs will be generated from pseudo-replicate datasets. Several software packages
 are available for this purpose. Among these, openModeller*1 is particularly 
 interesting, as openModeller allows running multiple different ENM/SDM 
 algorithms. Similarly Maxent*2  lends itself to analyzing a lot of data in batch 
-mode. For now, we can advice you on how to run openModeller and/or Maxent in 
-batch mode to analyze data efficiently with NichePy if you contact us. We are 
-planning on posting more detailed instructions in a blog later.
+mode (refer to the examples in BashScripts). Please conatact us if you need help
+or advice for a particular analysis.
 
     getMetric.py calculates the niche overlap metrics (I, D, and BC). For the 
 niche identity test overlap metrics are cacluated by comparing the ENMs/SDMs for
@@ -103,7 +102,7 @@ ENM/SDM from species B.
     P-values for both tests are calculated for all metrics and tests by counting
 the number of pseudo-replicate overlap values that are bigger or smaller than
 the value observed from ENMs/SDMs generated from original occurrence datasets.
-This allows testing two different null-hupotheses: 1) Are the ENMs/SDMs of 
+This allows testing different null-hupotheses; e.g., 1) Are the ENMs/SDMs of 
 species A and B more different than expected by chance, and 2) Are the ENMs/SDMs
 of species A and B more similar than expected by chance?
 
