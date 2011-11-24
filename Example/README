@@ -7,20 +7,29 @@ own experiment.
 The files Anolis_chlorocyanus.csv and Anolis_coelestinus.csv
 contain species occurrence data suitable for the resampling
 scripts nichIdentity and nicheBackground. The folder
-background/grids contains ARC/INFO ASCII grids from which 
+background_grids contains ARC/INFO ASCII grids from which 
 pseudo-presence records are drawn for the background test.
 
-The pseudo-replicate datsets comtained in the niche_identity
+The pseudo-replicate datsets contained in the niche_identity
 and niche_background folders (anoles-identity.csv and anoles-
 background.csv) were generated as follows.
 
-nicheIdentity -d path/to/Example/niche_identity -o anoles-identity.csv -A path/to/Example/Anolis-chlorocyanus.csv -B path/to/Example/Anolis-coelestinus.csv -n2
+$ nicheIdentity -d path/to/Example/niche_identity -o anoles-identity.csv 
+    -A path/to/Example/Anolis-chlorocyanus.csv 
+    -B path/to/Example/Anolis-coelestinus.csv -n2
 
-nicheBackground -d path/to/Example/niche_background -o anoles-identity.csv -A path/to/Example/Anolis-chlorocyanus.csv -B path/to/Example/Anolis-coelestinus.csv -a path/to/Example/background_grids/chlorocyanus_background.asc -b path/to/Example/back_grids/coelestinus_background.asc -n2
+$ nicheBackground -d path/to/Example/niche_background -o anoles-identity.csv 
+    -A path/to/Example/Anolis-chlorocyanus.csv -B path/to/Example/Anolis-coelestinus.csv 
+    -a path/to/Example/background_grids/chlorocyanus_background.asc 
+    -b path/to/Example/back_grids/coelestinus_background.asc -n2
 
 The CSVtoOM.sh shell script contained in the BashScripts folder
 was used to convert the comma-delimited csv files generated above
 into tab-delimited files suitable for use with OpenModeller.
+
+$ CSVtoOM.sh path/to/nicheIdentity/anoles-identity.csv
+
+$ CSVtoOM.sh path/to/nicheIdentity/anoles-identity.csv
 
 Refer to the BashScripts README for information on how models
 were generated with OpenModeller and how the consensus models
@@ -42,9 +51,9 @@ named in this manner.
 
 Niche identity and background tests were run as follows.
 
-getMetric -i path/to/niche_identity/models/ -t identity -n -m I D BC -s less
+$ getMetric -i path/to/niche_identity/models/ -t identity -n -m I D BC -s less
 
-getMetric -i path/to/niche_background/models/ -t background -n -m I D BC -s less
+$ getMetric -i path/to/niche_background/models/ -t background -n -m I D BC -s less
 
 This produced the Results folder in each algorithm folder. Results
 are written into comma-delimited csv files, one of which contains
