@@ -8,8 +8,8 @@ needs.
 
 OPENMODELLER:
 
-Contained in this folder are 2 bash scripts that we use to run
-models in batch mode through the headless version of OpenModeller 
+Contained in this folder are 2 scripts that we use to run models 
+in batch mode through the headless version of OpenModeller 
 on the command line.
 
 OpenModeller can generate a variety of models using different 
@@ -25,7 +25,7 @@ for the GUI version of OM. The input and output of CSVtoOM.sh
 is explained in the comments in the script.
 
 OmConsoleBatch.sh is a wrapper that modifies the OM input file
-request.txt and passes it on to OM. Please refer to the comments
+OmRequest.txt and passes it on to OM. Please refer to the comments
 in OmConsoleBatch.sh to get a general idea of what the wrapper 
 does. This script is a brute-force approach to run batch jobs
 through OM's cli program om_console and will require you to 

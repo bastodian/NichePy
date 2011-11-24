@@ -530,7 +530,23 @@ def ProcessPairs(indir, test, statistic, metric, todo):
 
 def resample_background(myfileA, myfileB, gridA, gridB, numreps, outfile, outdir):
     '''
-        This function resamples occurrence points from the background for the "background test". 
+        This function resamples occurrence points from the background for the "background test".
+    
+        This function reads the lines from each locality and background grid file, then randomly selects a row and
+        column from the grid file. The value at the selected location is rejectid if it is a no data value or
+        surrounded by no data values. If the value is not rejected it is converted to a latitude and longitude
+        pair in the following way:
+
+        lon = xllcorner value + randomly chosen column position * cellsize value + 0.5 * cellsize value
+        lat = yllcorner value + nrows value - randomly chosen row position * cellsize value - 0.5 * cellsize value
+
+        The xllcorner, cellsize, yllcorner, and nrows values are obtained from the .asc grid file header.
+
+        Finally the coordinates and their corresponding species names are written into a comma-delimited csv file. 
+        The species names are followed by a number indicating the pseudo replicate run.
+
+        input: myfileA (.csv locality file for species A), myfileB (.csv locality file for species B), gridA (background grid for species A),
+        gridB (background grid for species B), numreps (the number of pseudo replicates), outfile, outdir
     '''
     readA,readB = open(myfileA,'r'),open(myfileB,'r')
     linesA,linesB = readA.readlines(),readB.readlines()
@@ -597,6 +613,20 @@ def resample_background(myfileA, myfileB, gridA, gridB, numreps, outfile, outdir
                     myfile.write(cat)
 
 def resample_identity(myfileA,myfileB,outdir,outfilename,numreps):
+    '''
+        This function resamples occurrence points from a combined pool of points for the "identity test".
+    
+        This function reads the lines contained in each provided of two locality files and and forms a combined 
+        pool of all localities. Then, localities are randomly selected from the pool as described in the NichePy 
+        Manual. This is done the number of times specified by numreps, creating numreps pseudo-replicate datasets
+        for each species. 
+
+        The coordinates and their corresponding species names are written into a file. The species names
+        are followed by a number indicating the pseudo replicate run.
+
+        input: myfileA (.csv locality file for species A), myfileB (.csv locality file for species B), outfile, outdir,
+        numreps (the number of pseudo replicates)
+    '''
     readA,readB = open(myfileA,'r'),open(myfileB,'r')
     linesA,linesB = readA.readlines(),readB.readlines()
 

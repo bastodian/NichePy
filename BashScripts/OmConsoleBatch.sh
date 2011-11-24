@@ -26,6 +26,6 @@ for ((i=0;i<=$NUMREPS;++i))
 do
     myTax=${TAXON}_${i}
     echo $myTax
-    cat request.txt | sed s/taxon/${myTax}/ > request_temp.txt
-    om_console request_temp.txt > ${DIR}${myTax}.log 2>&1
-done && rm request_temp.txt
+    cat OmRequest.txt | sed s/taxon/${myTax}/ > OmRequest_temp.txt
+    om_console OmRequest_temp.txt > ${DIR}${myTax}.log 2>&1
+done && rm OmRequest_temp.txt

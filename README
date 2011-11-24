@@ -20,7 +20,7 @@ haven't already installed it on your machine
 INSTALLATION
 
 Refer to the MANUAL for additional details. In short, all
-Python scripts require Python version 3 (ideally 3.2).
+Python scripts require Python version 3 (ideally >= 3.2).
 
 The functions required by NichePy scripts are contained in the 
 nichefunc.py module. In addition Python versions 3 < 3.2 require 
