@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### Refer to the README for info on this wrapper and associated Consensus.sh script
+
 modelModelA=$1
 modelModelB=$2
 consensusModel=$3
