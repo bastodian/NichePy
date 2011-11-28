@@ -61,6 +61,11 @@ RF models. The wrapper ConsensusWrapper.sh modifies the script Consensus.sh
 by searching for and replacing the name of the inout models in a folder.
 For this to work all pairs of ARC/INFO ASCII files that should be averaged
 need to be in a single folder and all models need to be numbered with _digit. 
+The number of models needs to be passed on to the wrapper as the last argument
+to the wrapper.
+
+ConsensusWrapper.sh Genus_species1 Genus_species2 Output_Model numReplicates 
+
 E.g.:
 
 myModels/ENFAAnolis_chlorocyanus_0.asc
