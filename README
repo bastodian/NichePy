@@ -44,8 +44,18 @@ $ python3 setup.py install
 EXAMPLES
 
 The folder Examples contains example occurrence data sets and models.
-Please refer to the README in the Exmple folder to learn more about 
+Please refer to the README in the Example folder to learn more about 
 the input/output datastructure for NichePy.
+
+BATCH SCRIPTS AND WRAPPERS
+
+We included example batch scripts that show how ENMs/SDMs may be
+generated with OpenModeller or Maxent in batch mode. Also included 
+is a script that converts the output from nicheIdentity and/or
+nicheBackground into a format suitable as input for OpenModeller.
+
+In addition we included the scripts we used to generate simple
+consensus models by averaging.
 
 BUGS AND HELP
 
