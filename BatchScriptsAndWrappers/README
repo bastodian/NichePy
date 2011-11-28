@@ -24,14 +24,13 @@ suitable as input to OM. You can also use these files as input
 for the GUI version of OM. The input and output of CSVtoOM.sh
 is explained in the comments in the script.
 
-OmWrapper.sh is a wrapper that modifies the OM input file
+OmWrapper.py is a wrapper that modifies the OM input file
 OmRequest.txt and passes it on to OM. Please refer to the comments
-in OmConsoleBatch.sh to get a general idea of what the wrapper 
-does. This script is a brute-force approach to run batch jobs
-through OM's cli program om_console and will require you to 
-modify at least the request.txt file to make it work for your 
-specific analysis. In addition, you will need a functioning 
-installation of om_console.
+in OmWrapper.py to get a general idea of what the wrapper 
+does. This script runs batch jobs through OM's cli program 
+om_console and will require you to modify at least the 
+OmRequest.txt file to make it work for your specific analysis. 
+In addition, you will need a functioning installation of om_console.
     The om_console input file specification can be found here:
 http://openmodeller.sourceforge.net/index.php?option=com_content&task=view&id=27&Itemid=11
     In order to run OM without its GUI you will probably need to 
@@ -44,7 +43,9 @@ MaxentBatchExample.sh should give you an idea for how to run
 Maxent from the command line in batch mode. Options for Maxent
 change frequently and flags are regularly deprecated. Please
 refer to the Maxent documentation for the options supported by 
-the version of Maxent you downloaded.
+the version of Maxent you downloaded. In the Maxent GUI console
+select the Help tab to get information about the flags supported
+by your version of Maxent.
 
 CONSENSUS MODELS:
 
