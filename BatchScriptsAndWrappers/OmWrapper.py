@@ -24,7 +24,7 @@ import os, sys
 
 infile=sys.argv[1]
 omrequest=sys.argv[2]
-mytaxon=[]
+mytaxa=[]
 linenum=0
 
 with open(infile, 'r') as file:
@@ -33,8 +33,8 @@ with open(infile, 'r') as file:
         if linenum > 1:
             mylist=line.split()
             if mylist[1] not in set(mytaxon):
-                mytaxon.append(mylist[1])
-    for taxon in mytaxon:
+                mytaxa.append(mylist[1])
+    for taxon in mytaxa:
         replace='sed \'s/taxon/' + taxon + '/g\' ' + omrequest + ' > omnew.txt'
         os.system(replace)
         om='om_console omnew.txt'
