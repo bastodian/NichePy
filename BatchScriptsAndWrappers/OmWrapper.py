@@ -32,7 +32,7 @@ with open(infile, 'r') as file:
         linenum+=1
         if linenum > 1:
             mylist=line.split()
-            if mylist[1] not in set(mytaxon):
+            if mylist[1] not in set(mytaxa):
                 mytaxa.append(mylist[1])
     for taxon in mytaxa:
         replace='sed \'s/taxon/' + taxon + '/g\' ' + omrequest + ' > omnew.txt'
