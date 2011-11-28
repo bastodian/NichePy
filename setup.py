@@ -9,7 +9,7 @@ import os, stat
 
     This should work on Unix-like systems including Cygwin on Windows. 
     
-    To run:
+    To install:
 
     python3 setup.py install
 '''
