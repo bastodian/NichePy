@@ -38,18 +38,18 @@ def setupArg():
         license='Python License',
         )
 
-print("\n\tPlease choose your installation mode. Valid options are 1 or 2.\n\n\tIMPORTANT: Installation requires root privileges! Either change to the root account and run the script or use sudo.\n\n\t1 to make the scripts globally available. This will create symbolic links from the downloaded script files to /usr/bin.\n\t  In addition the module containing functions for NichePy will be installed using Python's installer.\n\n\t2 to install in the same manner as 2 but also install the argparse module using Python's installer.\n\t  This should only be necessary if you run Python3 < 3.2.\n\n")
+print("\nPlease choose your installation mode. Valid options are 1 or 2.\n\nIMPORTANT: Installation requires root privileges! Either change to the root account and run the script or use sudo.\n\n1 to make the scripts globally available. This will create symbolic links from the downloaded script files to /usr/bin.\n  In addition the module containing functions for NichePy will be installed using Python's installer.\n\n2 to install in the same manner as 2 but also install the argparse module using Python's installer.\n  This should only be necessary if you run Python3 < 3.2.\n\n")
 
 ### Ask for user input and create a list containing the python scripts to be installed
-Install=input("\n\tPlease choose your installation mode: ")
+Install=input("\nPlease choose your installation mode: ")
 Scripts=[os.path.join(os.getcwd(),x) for x in os.listdir(os.getcwd()) if "getMetric" in x or "nicheBack" in x or "nicheIdent" in x]
 
 if int(Install)==1 or int(Install)==2:
     ### Where should the scripts be linked to?
-    ExecPath=input("\n\tPlease type the path to which executables will be linked. If no entry default will be used (DEFAULT = /usr/bin): ")
+    ExecPath=input("\nPlease type the path to which executables will be linked. If no entry default will be used (DEFAULT = /usr/bin): ")
     if len(ExecPath) == 0:
         ExecPath='/usr/bin'
-    print('\n\tExecutable scripts will be linked to', ExecPath, 'to  make them globally avalilable on your system')
+    print('\nExecutable scripts will be linked to', ExecPath, 'to  make them globally avalilable on your system')
     ### Install option no 1
     if int(Install)==1:
         print("\nMaking scripts executable.")
@@ -69,7 +69,7 @@ if int(Install)==1 or int(Install)==2:
         print("\nInstallation complete. Scripts can be called by issuing the following commands:")
         for i in os.listdir(os.getcwd()):
             if "getMetric" in i or "nicheBack" in i or "nicheIdent" in i:
-                print("\n\t",i,"-h for brief guide of the script's usage")
+                print("\n",i,"-h for brief guide of the script's usage")
     ### Install option no 2
     else:
         print("\nMaking scripts executable.")
@@ -90,8 +90,8 @@ if int(Install)==1 or int(Install)==2:
         print("\nInstallation complete. Scripts can be called by issuing the following commands:")
         for i in os.listdir(os.getcwd()):
             if "getMetric" in i or "nicheBack" in i or "nicheIdent" in i:
-                print("\n\t",i,"-h for brief guide of the script's usage")
-    print("\n\tFor more details please refer to the manual of NichePy.\n")
+                print("\n",i,"-h for brief guide of the script's usage")
+    print("\nFor more details please refer to the manual of NichePy.\n")
 else:
     print("\nInvalid option entered. Please run installation script again!\n")
     exit()
