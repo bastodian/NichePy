@@ -16,12 +16,12 @@ background.csv) were generated as follows.
 
 $ nicheIdentity -d path/to/Example/niche_identity -o anoles-identity.csv 
     -A path/to/Example/Anolis-chlorocyanus.csv 
-    -B path/to/Example/Anolis-coelestinus.csv -n2
+    -B path/to/Example/Anolis-coelestinus.csv -n 2
 
 $ nicheBackground -d path/to/Example/niche_background -o anoles-identity.csv 
     -A path/to/Example/Anolis-chlorocyanus.csv -B path/to/Example/Anolis-coelestinus.csv 
     -a path/to/Example/background_grids/chlorocyanus_background.asc 
-    -b path/to/Example/back_grids/coelestinus_background.asc -n2
+    -b path/to/Example/back_grids/coelestinus_background.asc -n 2
 
 The CSVtoOM.sh shell script contained in the BashScripts folder
 was used to convert the comma-delimited csv files generated above
