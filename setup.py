@@ -8,6 +8,10 @@ import os, stat
     Installation script that sets up NichePy and installs the modules it depends on.
 
     This should work on Unix-like systems including Cygwin on Windows. 
+    
+    To run:
+
+    python3 setup.py install
 '''
 
 
