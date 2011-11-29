@@ -20,10 +20,11 @@
     Output file = path/to/taxon
 '''
 
-import os, sys
+from sys import argv
+from os import system as bash
 
-infile=sys.argv[1]
-omrequest=sys.argv[2]
+infile=argv[1]
+omrequest=argv[2]
 mytaxa=[]
 linenum=0
 
@@ -35,9 +36,6 @@ with open(infile, 'r') as file:
             if mylist[1] not in set(mytaxa):
                 mytaxa.append(mylist[1])
     for taxon in mytaxa:
-        replace='sed \'s/taxon/' + taxon + '/g\' ' + omrequest + ' > omnew.txt'
-        os.system(replace)
-        om='om_console omnew.txt'
-        os.system(om)
-        rm='rm omnew.txt'
-        os.system(rm)
+        bash('sed \'s/taxon/' + taxon + '/g\' ' + omrequest + ' > omnew.txt')
+        bash('om_console omnew.txt')
+        bash('rm omnew.txt')
