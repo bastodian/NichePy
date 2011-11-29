@@ -95,6 +95,9 @@ Output file type = FloatingASC
 ### Algorithm section ###
 ###
 ### Uncomment the algorithm you want to use - only one algorithm at a time may be run
+###
+### There are many more to choose from - download the example OpenModeller request
+### files from the OpenModeller website
 
 ########
 ## Ecological Niche Factor Analysis 
