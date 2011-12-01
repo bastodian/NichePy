@@ -2,90 +2,90 @@ NichePy version 1.1
 
 QUICK INSTALL
 
-$ git clone https://github.com/bastodian/NichePy.git
-$ sudo python3 setup.py install
+    $ git clone https://github.com/bastodian/NichePy.git
+    $ sudo python3 setup.py install
 
-If python3 -V < 3.2 choose option 2 else option 1
+    If python3 -V < 3.2 choose option 2 else option 1
 
 GET NICHEPY
 
-To download a zip archive of the NichePy repository go to:
+    To download a zip archive of the NichePy repository go to:
 
-https://github.com/bastodian/NichePy/zipball/master
+    https://github.com/bastodian/NichePy/zipball/master
 
-To download a tar.gz archive of the NichePy repository go to:
+    To download a tar.gz archive of the NichePy repository go to:
 
-https://github.com/bastodian/NichePy/tarball/master
+    https://github.com/bastodian/NichePy/tarball/master
 
-Alternatively:
+    Alternatively:
 
-$ git clone https://github.com/bastodian/NichePy.git
+    $ git clone https://github.com/bastodian/NichePy.git
 
-This will download the contents of the NichePy repository into
-a folder called NichePy.
+    This will download the contents of the NichePy repository into
+    a folder called NichePy.
 
-Prerequisite for this to work is that you install git if you 
-haven't already installed it on your machine 
-(http://git-scm.com/download).
+    Prerequisite for this to work is that you install git if you 
+    haven't already installed it on your machine 
+    (http://git-scm.com/download).
 
 INSTALLATION
 
-Refer to the MANUAL for additional details. In short, all
-Python scripts require Python version 3 (ideally >= 3.2).
+    Refer to the MANUAL for additional details. In short, all
+    Python scripts require Python version 3 (ideally >= 3.2).
 
-The functions required by NichePy scripts are contained in the 
-nichefunc.py module. In addition Python versions 3 < 3.2 require 
-the argparse.py module. Simply run setup.py or keep these module 
-files in the same directory as the resampling scripts, 
-nicheIdentity.py and nicheBackground.py, and the getMetric.py 
-script.
+    The functions required by NichePy scripts are contained in the 
+    nichefunc.py module. In addition Python versions 3 < 3.2 require 
+    the argparse.py module. Simply run setup.py or keep these module 
+    files in the same directory as the resampling scripts, 
+    nicheIdentity.py and nicheBackground.py, and the getMetric.py 
+    script.
 
-Included is an installation script that places a link from the
-location of the getMetric, nicheIdentity, and nicheBackground 
-scripts to the folder /usr/bin and makes the scripts executable.
-In addition, the nichefunc and/or argparse modules will be installed
-using Python's built-in installer.
+    Included is an installation script that places a link from the
+    location of the getMetric, nicheIdentity, and nicheBackground 
+    scripts to the folder /usr/bin and makes the scripts executable.
+    In addition, the nichefunc and/or argparse modules will be installed
+    using Python's built-in installer.
 
-After running the installation script the scripts can be called from
-anywhere in the file hierarchy.
+    After running the installation script the scripts can be called from
+    anywhere in the file hierarchy.
 
-To install using our installation script change to root (su root):
+    To install using our installation script change to root (su root):
 
-$ python3 setup.py install
+    $ python3 setup.py install
 
-or
+    or
 
-$ sudo python3 setup.py install
+    $ sudo python3 setup.py install
 
 EXAMPLES
 
-The folder Examples contains example occurrence data sets and models.
-Please refer to the README in the Example folder to learn more about 
-the input/output datastructure for NichePy.
+    The folder Examples contains example occurrence data sets and models.
+    Please refer to the README in the Example folder to learn more about 
+    the input/output datastructure for NichePy.
 
 BATCH SCRIPTS AND WRAPPERS
 
-We included example batch scripts that show how ENMs/SDMs may be
-generated with OpenModeller or Maxent in batch mode. Also included 
-is a script that converts the output from nicheIdentity and/or
-nicheBackground into a format suitable as input for OpenModeller.
+    We included example batch scripts that show how ENMs/SDMs may be
+    generated with OpenModeller or Maxent in batch mode. Also included 
+    is a script that converts the output from nicheIdentity and/or
+    nicheBackground into a format suitable as input for OpenModeller.
 
-In addition we included the scripts we used to generate simple
-consensus models by averaging.
+    In addition we included the scripts we used to generate simple
+    consensus models by averaging.
 
 BUGS AND HELP
 
-We made every effort to track down and fix bugs in our scripts. If
-you discover what you believe is a bug, please send an email to
-bastodian@gmail.com and/or m.shcheglovitova@gmail.com.
+    We made every effort to track down and fix bugs in our scripts. If
+    you discover what you believe is a bug, please send an email to
+    bastodian@gmail.com and/or m.shcheglovitova@gmail.com.
 
-If you have trouble using our scripts don't hesitate to contact us.
+    If you have trouble using our scripts don't hesitate to contact us.
 
-Please include a brief description of the problem in the email that
-includes any messages that the scripts printed to the screen. Please
-also include (a subset) of the files you were trying to run the 
-scripts on, so that we can replicate the problem.
+    Please include a brief description of the problem in the email that
+    includes any messages that the scripts printed to the screen. Please
+    also include (a subset) of the files you were trying to run the 
+    scripts on, so that we can replicate the problem.
 
-Lastly, please include the version number of your Python installation 
-(type python -V or python3 -V in the shell) and Operating system in 
-your email to us.
+    Lastly, please include the version number of your Python installation 
+    (type python -V or python3 -V in the shell) and Operating system in 
+    your email to us.
