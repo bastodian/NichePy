@@ -5,6 +5,8 @@ QUICK INSTALL GUIDE FOR THE IMPATIENT
 $ git clone https://github.com/bastodian/NichePy.git
 $ sudo python3 setup.py install
 
+If python3 -V < 3.2 choose option 2 else option 1
+
 GET NICHEPY
 
 To download a zip archive of the NichePy repository go to:
