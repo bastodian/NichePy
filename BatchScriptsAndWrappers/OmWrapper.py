@@ -18,6 +18,8 @@
     Occurrences group = taxon
     Output model = path/to/taxon
     Output file = path/to/taxon
+    Output model = path/to/taxon.xml
+    Output file = path/to/taxon.asc
 '''
 
 from sys import argv
