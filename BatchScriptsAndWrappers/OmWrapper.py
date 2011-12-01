@@ -30,8 +30,8 @@ omrequest=argv[2]
 mytaxa=[]
 linenum=0
 
-with open(infile, 'r') as file:
-    for line in file:
+with open(infile, 'r') as myfile:
+    for line in myfile:
         linenum+=1
         if linenum > 1:
             mylist=line.split()
