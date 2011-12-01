@@ -1,6 +1,6 @@
 NichePy version 1.1
 
-QUICK INSTALL GUIDE FOR THE IMPATIENT
+QUICK INSTALL
 
 $ git clone https://github.com/bastodian/NichePy.git
 $ sudo python3 setup.py install
