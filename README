@@ -53,9 +53,23 @@ INSTALLATION
 
     $ python3 setup.py install
 
-    or
+    or if you have sudo set up (default on Ubuntu and many other Linux
+                                distros)
 
     $ sudo python3 setup.py install
+
+    After installing the scripts using setup.py the scripts can be
+    executed as follows:
+
+    $ nicheIdentity
+    $ nicheBackground
+    $ getMetric
+
+    If the scripts were not installed using setup.py use:
+
+    $ python3 path/to/nicheIdentity.py
+    $ python3 path/to/nicheBackground.py
+    $ python3 path/to/getMetric.py
 
 EXAMPLES
 
