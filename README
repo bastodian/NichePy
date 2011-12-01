@@ -1,5 +1,10 @@
 NichePy version 1.1
 
+IMPATIENT?!
+
+$ git clone https://github.com/bastodian/NichePy.git
+$ sudo python3 setup.py install
+
 GET NICHEPY
 
 To download a zip archive of the NichePy repository go to:
@@ -28,9 +33,10 @@ Python scripts require Python version 3 (ideally >= 3.2).
 
 The functions required by NichePy scripts are contained in the 
 nichefunc.py module. In addition Python versions 3 < 3.2 require 
-the argparse.py module to work. Simply keep these module files
-in the same directory as the resampling scripts, nicheIdentity.py
-and nicheBackground.py, and the getMetric.py script.
+the argparse.py module. Simply run setup.py or keep these module 
+files in the same directory as the resampling scripts, 
+nicheIdentity.py and nicheBackground.py, and the getMetric.py 
+script.
 
 Included is an installation script that places a link from the
 location of the getMetric, nicheIdentity, and nicheBackground 
@@ -41,9 +47,13 @@ using Python's built-in installer.
 After running the installation script the scripts can be called from
 anywhere in the file hierarchy.
 
-To install using our installation script:
+To install using our installation script change to root (su root):
 
 $ python3 setup.py install
+
+or
+
+$ sudo python3 setup.py install
 
 EXAMPLES
 
