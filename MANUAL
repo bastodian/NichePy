@@ -174,9 +174,10 @@ E/ nicheIDENTITY.PY
 input (Species,Longitude,Latitude) where Longitude and Latitude should to be in 
 decimal degrees.
 
-    The script can be called from the command line as follows: 
+The script can be called from the command line as follows: 
+    when installed using the setup.py script:
 $ nicheIdentity
-    when installed using the setup.py script
+    otherwise:
 $ python3 /path/to/file/nicheIdentity.py
     Depending on the operating system the following may execute Python ver. 3:
 $ python /path/to/file/nicheIdentity.py
@@ -212,9 +213,10 @@ decimal degrees. In addition, two ASCII grids need to be provided from which
 pseudo-replicate occurrence points will be drawn. It is up to the user to decide
 how these ASCII grids will be generated.
 
-    The script can be called from the command line as follows: 
+The script can be called from the command line as follows: 
+    when installed using the setup.py script:
 $ nicheBackground
-    when installed using the setup.py script
+    otherwise:
 $ python3 /path/to/file/nicheBackground.py
     Depending on the operating system the following may execute Python ver. 3:
 $ python /path/to/file/nicheBackground.py
@@ -270,9 +272,10 @@ ASCII grids and calculate I, D, and/or BC for the appropriate pairs of ASCII gri
 The pairing of ASCII grids to be compared depends on the test, identity or 
 background.
 
-    The script can be called from the command line as follows: 
+The script can be called from the command line as follows: 
+    when installed using the setup.py script:
 $ getMetric
-    when installed using the setup.py script
+    otherwise:
 $ python3 /path/to/file/nicheMetric.py
     Depending on the operating system the following may execute Python ver. 3:
 $ python /path/to/file/nicheMetric.py
