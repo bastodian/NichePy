@@ -46,15 +46,15 @@ in the Cygwin environment (see http://docs.python.org/using/windows.html).
 applicable unless you use Cygwin!
     
     Our code is not compatible with Python ver. 2.x. If you are running Python 
-ver. 3 < 3.2 you will have to set up the argparse module (argparse.py) that we are 
-distributing with the scripts. The setup script setup.py should take care of the 
-installation of argparse in case you need it. 
+ver. 3 < 3.2 you will have to set up the argparse module (argparse.py) that we
+are distributing with the scripts. The setup script setup.py should take care 
+of the installation of argparse in case you need it. 
 
 --------------------------------------------------------------------------------
 B/ INSTALLATION
 
-You need to have the root account enabled and run the setup script with root
-privileges!
+    You need to have the root account enabled and run the setup script with root
+privileges! (for Mac OSX read http://support.apple.com/kb/ht1528)
 
 $ su root
 $ python3 setup.py install
@@ -63,9 +63,6 @@ or (this should work on Ubuntu out of the box)
 
 $ sudo python3 setup.py install
 
-    If you don't run the setup script just leave the modules argparse.py and
-nichefunc.py in the directory that contains the remainder of the Python scripts.
-
     After installing the scripts using setup.py the scripts will be renamed and 
 can be executed by typing nicheIdentity, nicheBackground, or getMetric. 
 
@@ -73,6 +70,8 @@ $ nicheIdentity
 $ nicheBackground
 $ getMetric
 
+    If you don't run the setup script just leave the modules argparse.py and
+nichefunc.py in the directory that contains the remainder of the Python scripts.
     If the scripts were not installed using setup.py use:
 
 $ python3 path/to/nicheIdentity.py
