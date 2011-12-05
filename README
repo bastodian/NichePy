@@ -49,7 +49,7 @@ INSTALLATION
     After running the installation script the scripts can be called from
     anywhere in the file-system hierarchy.
 
-    To install using our installation script change to root (su root):
+    To install using our installation script change to root (su root) and:
 
     $ python3 setup.py install
 
@@ -84,7 +84,7 @@ BATCH SCRIPTS AND WRAPPERS
     is a script that converts the output from nicheIdentity and/or
     nicheBackground into a format suitable as input for OpenModeller.
 
-    In addition we included the scripts we used to generate simple
+    In addition, we included the scripts we used to generate simple
     consensus models by averaging.
 
 BUGS AND HELP
