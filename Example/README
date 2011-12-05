@@ -23,7 +23,7 @@ $ nicheBackground -d path/to/Example/niche_background -o anoles-identity.csv
     -a path/to/Example/background_grids/chlorocyanus_background.asc 
     -b path/to/Example/back_grids/coelestinus_background.asc -n 2
 
-The CSVtoOM.sh shell script contained in the BatchScriptsAndWarappers
+The CSVtoOM.sh shell script contained in the BatchScriptsAndWrappers
 folder was used to convert the comma-delimited csv files generated 
 above into tab-delimited files suitable for use with OpenModeller.
 
@@ -31,7 +31,7 @@ $ CSVtoOM.sh path/to/nicheIdentity/anoles-identity.csv
 
 $ CSVtoOM.sh path/to/nicheIdentity/anoles-identity.csv
 
-Refer to the BatchScriptsAndWarappers README for information on how 
+Refer to the BatchScriptsAndWrappers README for information on how 
 models were generated with OpenModeller and how the consensus models
 were calculated. The folder Hispaniola_PCA_20 contains principal 
 components of WORLDCLIM data for Hispaniola that were used for 
