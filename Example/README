@@ -23,9 +23,9 @@ $ nicheBackground -d path/to/Example/niche_background -o anoles-identity.csv
     -a path/to/Example/background_grids/chlorocyanus_background.asc 
     -b path/to/Example/back_grids/coelestinus_background.asc -n 2
 
-The CSVtoOM.sh shell script contained in the BashScripts folder
-was used to convert the comma-delimited csv files generated above
-into tab-delimited files suitable for use with OpenModeller.
+The CSVtoOM.sh shell script contained in the BatchScriptsAndWarappers
+folder was used to convert the comma-delimited csv files generated 
+above into tab-delimited files suitable for use with OpenModeller.
 
 $ CSVtoOM.sh path/to/nicheIdentity/anoles-identity.csv
 

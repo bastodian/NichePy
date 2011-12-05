@@ -28,15 +28,16 @@ from os import system as bash
 infile=argv[1]
 omrequest=argv[2]
 mytaxa=[]
-linenum=0
+#linenum=0
 
 with open(infile, 'r') as myfile:
+    header=myfile.readline()
     for line in myfile:
-        linenum+=1
-        if linenum > 1:
-            mylist=line.split()
-            if mylist[1] not in set(mytaxa):
-                mytaxa.append(mylist[1])
+        #linenum+=1
+        #if linenum > 1:
+        mylist=line.split()
+        if mylist[1] not in set(mytaxa):
+            mytaxa.append(mylist[1])
     for taxon in mytaxa:
         bash('sed \'s/taxon/' + taxon + '/g\' ' + omrequest + ' > omnew.txt')
         bash('om_console omnew.txt')

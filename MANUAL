@@ -114,7 +114,7 @@ ENM/SDM from species B.
     P-values for both tests are calculated for all metrics and tests by counting
 the number of pseudo-replicate overlap values that are bigger or smaller than
 the value observed from ENMs/SDMs generated from original occurrence datasets.
-This allows testing different null-hupotheses; e.g., 1) Are the ENMs/SDMs of 
+This allows testing different null-hypotheses; e.g., 1) Are the ENMs/SDMs of 
 species A and B more different than expected by chance, and 2) Are the ENMs/SDMs
 of species A and B more similar than expected by chance?
 
