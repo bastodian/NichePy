@@ -46,7 +46,7 @@ in the Cygwin environment (see http://docs.python.org/using/windows.html).
 applicable unless you use Cygwin!
     
     Our code is not compatible with Python ver. 2.x. If you are running Python 
-ver. < 3.2 you will have to set up the argparse module (argparse.py) that we are 
+ver. 3 < 3.2 you will have to set up the argparse module (argparse.py) that we are 
 distributing with the scripts. The setup script setup.py should take care of the 
 installation of argparse in case you need it. 
 
