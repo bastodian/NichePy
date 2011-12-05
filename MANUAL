@@ -6,16 +6,17 @@ Mariya Shcheglovitova (m.shcheglovitova@gmail.com)
 
 > CONTENTS
     * A/ REQUIREMENTS
-    * B/ WORKFLOW
-    * C/ INPUT-OUPTPUT DATA
-    * D/ nicheIDENTITY.PY
-    * E/ nicheBACKGROUND.PY
-    * F/ getMETRIC.PY
-    * G/ RUNNING LONG ANALYSES
-    * H/ PIPELINES
-    * I/ RUNNING ANALYSES IN PARALLEL
-    * J/ REFERENCES
-    * K/ LICENSE
+    * B/ INSTALLATION
+    * C/ WORKFLOW
+    * D/ INPUT-OUPTPUT DATA
+    * E/ nicheIDENTITY.PY
+    * F/ nicheBACKGROUND.PY
+    * G/ getMETRIC.PY
+    * H/ RUNNING LONG ANALYSES
+    * I/ ANALYSIS PIPELINES
+    * J/ RUNNING ANALYSES IN PARALLEL
+    * K/ REFERENCES
+    * L/ LICENSE
     *
 --------------------------------------------------------------------------------
 A/ REQUIREMENTS
@@ -49,7 +50,8 @@ ver. < 3.2 you will have to set up the argparse module (argparse.py) that we are
 distributing with the scripts. The setup script setup.py should take care of the 
 installation of argparse in case you need it. 
 
-INSTALL:
+--------------------------------------------------------------------------------
+B/ INSTALLATION
 
 You need to have the root account enabled and run the setup script with root
 privileges!
@@ -68,7 +70,7 @@ nichefunc.py in the directory that contains the remainder of the Python scripts.
 can be executed by typing nicheIdentity, nicheBackground, or getMetric. 
 
 --------------------------------------------------------------------------------
-B/ WORKFLOW
+C/ WORKFLOW
 
     NichePy contains 3 Python scripts as of now: nicheIdentity.py, 
 nicheBackground.py, and getMetric.py. The functions used by these scripts are
@@ -127,7 +129,7 @@ compile it from source (see http://openmodeller.sourceforge.net/INSTALL.html).
 *2 (http://www.cs.princeton.edu/~schapire/maxent/)
 
 --------------------------------------------------------------------------------
-C/ INPUT-OUTPUT DATA
+D/ INPUT-OUTPUT DATA
 
     Below is a summary of the input and output data for NichePy. You can find 
 example files in the Example folder. Follow the occurrence data naming scheme 
@@ -166,7 +168,7 @@ a sub-folder in which the ARC/INFO ASCII grids are contained (e.g.,
 /output/algorithm).
 
 --------------------------------------------------------------------------------
-D/ nicheIDENTITY.PY
+E/ nicheIDENTITY.PY
 
     Two comma-delimited csv files with species occurence data are required as 
 input (Species,Longitude,Latitude) where Longitude and Latitude should to be in 
@@ -202,7 +204,7 @@ $ python /path/to/file/nicheIdentity.py
     will be generated. Default is 100.
     
 --------------------------------------------------------------------------------
-E/ nicheBACKGROUND.PY
+F/ nicheBACKGROUND.PY
 
     Two comma-delimited csv files with species occurence data are required as 
 input (Species,Longitude,Latitude) where Longitude and Latitude should to be in 
@@ -248,7 +250,7 @@ $ python /path/to/file/nicheBackground.py
     will be generated. Default is 100.
 
 --------------------------------------------------------------------------------
-F/ getMETRIC.PY
+G/ getMETRIC.PY
 
     This script calculates the corrected modified Hellinger distance, I (Roedder 
 & Engler 2011; Bentlage & Shcheglovitova in prep), and Schoener's D (Warren et 
@@ -312,7 +314,7 @@ $ python /path/to/file/nicheMetric.py
     calculate I, D, and/or BC should be written into a directory.
     
 --------------------------------------------------------------------------------
-G/ RUNNING LONG ANALYSES
+H/ RUNNING LONG ANALYSES
 
     Both nicheIdentity.py and nicheBackground.py run quite fast and generally 
 finish within minutes. Calculating I, D, or BC for large datsets and many 
@@ -354,7 +356,7 @@ http://cartwrightlab.wikispaces.com/IO+Redirection
 http://cartwrightlab.wikispaces.com/Running+Long+Jobs
 
 --------------------------------------------------------------------------------
-H/ PIPELINES
+I/ ANALYSIS PIPELINES
 
     NichePy is well-suited to be run as part of analysis pipelines. We designed 
 NichePy as a set of independent Python scripts with the idea that they may be
@@ -385,7 +387,7 @@ need to include commands that move files around depending on where you want
 files to be stored (look into the commands cp, mv, and rm for this).
 
 --------------------------------------------------------------------------------
-I/ RUNNING ANALYSES IN PARALLEL
+J/ RUNNING ANALYSES IN PARALLEL
 
     At present NichePy is not written to take advantage of multiple processors. 
 Both nicheIdentity and nicheBackground run reasonably fast, but running 
@@ -421,7 +423,7 @@ unless you pass the flag -j+0 to GNU Parallel.
 Running your analyses in this way can cut run times significantly!
 
 --------------------------------------------------------------------------------
-J/ REFERENCES
+K/ REFERENCES
 
 Roedder D & JO Engler (2011) Quantitative metrics of overlaps in Grinnellian
     niches: advances and possible drawbacks. Global Ecology and Biogeography
@@ -430,7 +432,7 @@ Warren DL, RE Glor M Turelli (2008) Environmental niche identity versus
     2868-2883
 
 --------------------------------------------------------------------------------
-K/ LICENSE
+L/ LICENSE
     
     NichePy is distributed under the GNU General Public License version 3 or 
 higher (www.gnu.org/copyleft/gpl.html).
