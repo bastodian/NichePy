@@ -47,7 +47,7 @@ INSTALLATION
     using Python's built-in installer.
 
     After running the installation script the scripts can be called from
-    anywhere in the file hierarchy.
+    anywhere in the file-system hierarchy.
 
     To install using our installation script change to root (su root):
 
